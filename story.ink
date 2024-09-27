@@ -25,7 +25,7 @@ At 18:00, a group of employees spills out of the building, and one man climbs in
 The employee exits bags in hand right into Raven’s chloroform. The man slumps into unconsciousness, and Raven retrieves his ID card. With a quick glance at the card, he adopts the identity of "Billy Mohel," a quality control inspector.
 Waiting for the next shift, Raven merges with a group of employees entering the facility. He passes through security without raising any alarms. Once inside the production building, he gives a signal to his team to cut CCTV feeds and begins to strategize his next moves.
 
-[Plan the next actions] -> d
++ [Plan the next actions] -> d
 
 == c
 
@@ -33,7 +33,7 @@ Raven waits in the shadows as dusk settles in, watching the building from a conc
 With a subtle signal, Raven instructs his team to cut the CCTV feeds, ensuring he won’t be spotted. He then scales a rain pipe, reaching the second floor with practiced ease. As he peers into the dimly lit area, he notices a terrace window left ajar—an oversight that could prove beneficial. It seems the staff have grown overly reliant on their motion sensors, unaware that those alarms have been disabled.
 Quietly, he slips through the open window, entering the building and taking a moment to survey his surroundings. With the facility now his playground, Raven begins to strategize his next moves, mentally mapping out potential targets and escape routes.
 
-[Plan the next actions] -> d
++ [Plan the next actions] -> d
 
 == d
 
@@ -50,10 +50,10 @@ Raven stands poised within the facility, acutely aware that time is of the essen
 }
 The urgency fuels his focus as he mentally assembles his mission objectives: find the killer drone prototype and locate the order documents.
 Wall map:
-+[First floor: research lab] -> e
-+[Second floor: quality control office] -> f
-+[Third floor: accounting department] -> g
-+[Get out of the building] -> h
++ [First floor: research lab] -> e
++ [Second floor: quality control office] -> f
++ [Third floor: accounting department] -> g
++ [Get out of the building] -> h
 
 == e
 
@@ -64,7 +64,7 @@ The research lab is lined with computers and electronic equipment.
 Wall-mounted desks encircle a large central alcove, where a test harness dangles from the ceiling, crisscrossed with a tangle of cables. There, suspended in the air, is a remarkably small quadcopter. The prototype! Such a small machine capable of inflicting so much damage.
 Raven carefully unclips the machine from the testing equipment, feeling the smooth surface of the drone in his hands.
 
-+[Plan next actions] -> d
++ [Plan next actions] -> d
 
 == f
 
@@ -80,13 +80,14 @@ Inside the quality control office, Raven hopes to find essential documentation r
 Fortunately, Raven remembers he picked up an access control card from the employee he had followed earlier. He swipes it over the reader, and a green light flashes accompanied by a satisfying beep—the door clicks open!
 Inside, the office is cramped, housing only a handful of desks, all eerily empty, awaiting the morning shift. The wall clock ticks, reminding him time is slipping away.
 Raven quickly scours the room, bypassing the computers - there's no time for messing around. Instead, he focuses on the papers scattered across the desks and the occasional flash drive left behind. He manages to snag a handful of documents that look promising, a mix of contracts and performance reports, before slipping out just in time to avoid the incoming employees.
-[Plan next actions] -> d
++ [Plan next actions] -> d
+
 == m
 
 Unfortunately, the door is locked tight. Raven swiftly tries to signal his support team, hoping they can unlock it remotely. He sends a quick message, his fingers tapping against the screen as the seconds tick by.
 His team, already stretched thin trying to conceal their activities from the intrusion detection systems, struggle to respond. Minutes drag on, filled with tension and uncertainty, until he realizes they won’t make it in time. With a deep breath, Raven abandons this approach, knowing he must act quickly to fulfill his mission.
 
-+[Plan next actions] -> d
++ [Plan next actions] -> d
 
 == g
 
@@ -103,7 +104,7 @@ Behind the door is a room filled with lockers, desks and... people! Several empl
 
 He walks cautiously around the perimeter of the room, weighing his options. The clock ticks ominously, reminding him that he can’t linger for long.
 
-+[Plan next actions] -> d
++ [Plan next actions] -> d
 
 == o
 ~ has_documents = true
@@ -111,7 +112,9 @@ He walks cautiously around the perimeter of the room, weighing his options. The 
 Raven enters a cramped room filled with lockers and desks, quickly making his way to the "Shipment" section of the archives.
 His eyes glance over the last few orders and the number of items in the invoices. "5... 10... 10 000!" The numbers leap out at him - ten thousand "mail delivery drones" ordered by a foreign company. His pulse quickens; this could be the intel that links the drone project to a larger threat.
 
-Raven is pretty sure he got the right documents. +[Plan next actions] -> d
+Raven is pretty sure he got the right documents. 
+
++ [Plan next actions] -> d
 
 == k
 
@@ -127,17 +130,13 @@ THE END
 == h
 
 Raven knows his time is running out, so he retraces his steps, escaping the building the same way he entered. A wave of relief washes over him as he leaves the "Drone Dynamics" facility behind. But did he get everything he came for?
-{has_documents && has_prototype}
-"Mission: success. The killer swarm drone buyer is identified. An ambush is set to capture the moment of delivery. Enough evidence is gathered to dismantle an international terrorist organization."
+{has_documents && has_prototype} "Mission: success. The killer swarm drone buyer is identified. An ambush is set to capture the moment of delivery. Enough evidence is gathered to dismantle an international terrorist organization."
 
-{has_documents && not has_prototype}
-"Mission: fail. The killer swarm drone buyer is identified, but not enough evidence was collected to bring down his organization."
+{has_documents && not has_prototype} "Mission: fail. The killer swarm drone buyer is identified, but not enough evidence was collected to bring down his organization."
 
-{not has_documents && has_prototype}
-"Mission: fail. The investigation shows the drone can be weaponized, but a weapon without evident intent serves little purpose."
+{not has_documents && has_prototype} "Mission: fail. The investigation shows the drone can be weaponized, but a weapon without evident intent serves little purpose."
 
-{not has_documents && not has_prototype}
-"Mission: fail. Soon, a new series of terrorist events will unfold worldwide. Raven had the chance to stop it, but he blew it."
+{not has_documents && not has_prototype} "Mission: fail. Soon, a new series of terrorist events will unfold worldwide. Raven had the chance to stop it, but he blew it."
 
 THE END
 
