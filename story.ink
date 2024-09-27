@@ -40,13 +40,13 @@ Quietly, he slips through the open window, entering the building and taking a mo
 {time == 3} -> k
 
 Raven stands poised within the facility, acutely aware that time is of the essence. A quick message from his support team vibrates in his earpiece:
-{
-Time = 0:
-“Time is of the essence. Intrusion detection soon will find our hack!”
-time == 1:
+{ 
+    - time == 0:
+    “Time is of the essence. Intrusion detection soon will find our hack!”
+    - time == 1:
     “Automated defenses are picking us up. Be quick!”
-Time == 2:
-“We are discovered. Better get out soon!”
+    - time == 2:
+    “We are discovered. Better get out soon!”
 }
 The urgency fuels his focus as he mentally assembles his mission objectives: find the killer drone prototype and locate the order documents.
 Wall map:
@@ -57,8 +57,8 @@ Wall map:
 
 == e
 
-{has_prototype = true}
-{time += 1}
+~ has_prototype = true
+~ time += 1
 
 The research lab is lined with computers and electronic equipment.
 Wall-mounted desks encircle a large central alcove, where a test harness dangles from the ceiling, crisscrossed with a tangle of cables. There, suspended in the air, is a remarkably small quadcopter. The prototype! Such a small machine capable of inflicting so much damage.
@@ -68,7 +68,7 @@ Raven carefully unclips the machine from the testing equipment, feeling the smoo
 
 == f
 
-{time += 1}
+~ time += 1
 Inside the quality control office, Raven hopes to find essential documentation regarding the drone's specifications, performance tests, and possibly shipment details that could lead to the buyers. However, as he approaches, he discovers the office is secured behind a robust door, its strength suggesting that it guards sensitive information. Next to it on the wall, a small RFID tag reader glows in red, waiting for an authorized card.
 
 {b} -> l
@@ -76,7 +76,7 @@ Inside the quality control office, Raven hopes to find essential documentation r
 
 == l
 
-{has_documents = true}
+~ has_documents = true
 Fortunately, Raven remembers he picked up an access control card from the employee he had followed earlier. He swipes it over the reader, and a green light flashes accompanied by a satisfying beep—the door clicks open!
 Inside, the office is cramped, housing only a handful of desks, all eerily empty, awaiting the morning shift. The wall clock ticks, reminding him time is slipping away.
 Raven quickly scours the room, bypassing the computers - there's no time for messing around. Instead, he focuses on the papers scattered across the desks and the occasional flash drive left behind. He manages to snag a handful of documents that look promising, a mix of contracts and performance reports, before slipping out just in time to avoid the incoming employees.
@@ -90,7 +90,7 @@ His team, already stretched thin trying to conceal their activities from the int
 
 == g
 
-{time += 1}
+~ time += 1
 As Raven climbs the stairs toward the accounting department, a surge of optimism fills him. This is where every incoming and outgoing document is meticulously logged, and he hopes to find crucial intel on the drone’s buyer.
 He reaches the door to the accounting office, ready to dive into the paperwork that could reveal the vital information he needs.
 
@@ -106,7 +106,7 @@ He walks cautiously around the perimeter of the room, weighing his options. The 
 +[Plan next actions] -> d
 
 == o
-{has_papers = true}
+~ has_documents = true
 
 Raven enters a cramped room filled with lockers and desks, quickly making his way to the "Shipment" section of the archives.
 His eyes glance over the last few orders and the number of items in the invoices. "5... 10... 10 000!" The numbers leap out at him - ten thousand "mail delivery drones" ordered by a foreign company. His pulse quickens; this could be the intel that links the drone project to a larger threat.
@@ -121,6 +121,8 @@ His instincts scream at him to run, but before he can reach the exit, a barrage 
 What an odd company—its security seems more eager to shoot than to question. The world fades around him, and all Raven can think is that this mission ended far too soon...
 
 THE END
+
+-> END
 
 == h
 
@@ -138,3 +140,5 @@ Raven knows his time is running out, so he retraces his steps, escaping the buil
 "Mission: fail. Soon, a new series of terrorist events will unfold worldwide. Raven had the chance to stop it, but he blew it."
 
 THE END
+
+-> END
