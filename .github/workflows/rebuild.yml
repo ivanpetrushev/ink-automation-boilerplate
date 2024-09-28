@@ -18,15 +18,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: inklecate_linux.zip
-          key: inklecate-${{ hashFiles('inklecate_version.txt') }}
+          key: inklecate-v1.2.0
           restore-keys: |
-            inklecate-
+            inklecate-v1.2.0
       # Download the release if not found in cache
       - name: Download inklecate
         if: steps.inklecate-cache.outputs.cache-hit != 'true'
         run: |
           wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
-          echo "v1.2.0" > inklecate_version.txt
       # Unzip the file for later use
       - name: Unzip inklecate
         run: unzip -o inklecate_linux.zip
