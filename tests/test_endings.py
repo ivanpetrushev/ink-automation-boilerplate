@@ -41,7 +41,8 @@ def test_ending_2(p):
     p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
-    assert "Mission: failure" in output and "weaponized" in output
+    assert "Mission: failure" in output 
+    assert "weaponized" in output
     
 
 if __name__ == "__main__":
