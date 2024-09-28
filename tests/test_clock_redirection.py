@@ -43,6 +43,7 @@ def test_time_advancement(p):
     # p.sendline('1') # don't go back to hub, as this will trigger game end
     # p.expect_exact('?>')
     p.sendline('time')
+    p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
     assert "3" in output

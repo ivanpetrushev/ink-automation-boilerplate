@@ -28,6 +28,7 @@ def test_ending_1(p):
     Go through the whole path, check if the desired end is reached.
     """
     send_inputs(p, "1,1,1,1,2,1,2")
+    p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
     assert "Mission: success" in output
