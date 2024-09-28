@@ -32,6 +32,16 @@ def test_ending_1(p):
     output = p.before
     print("Captured Output:", output)
     assert "Mission: success" in output
+
+def test_ending_2(p):
+    """
+    Go through the whole path, check if the desired end is reached.
+    """
+    send_inputs(p, "1,1,1,1,3")
+    p.expect_exact('?>')
+    output = p.before
+    print("Captured Output:", output)
+    assert "Mission: failure" in output and "weaponized" in output
     
 
 if __name__ == "__main__":
