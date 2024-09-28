@@ -24,14 +24,14 @@ As a writer, I want to:
 7. PR automation will run tests.
 8. When PR is merged, automation will deploy the story to your chosen destination.
 
-## Rebuilding the story.json
+### Permissions for pushing the story.json
 
 For the GitHub action to have access to commit back story.json changes, you need to give actions permissions:
 
 1. Go to `Settings -> Actions -> General`.
 2. Check `Workflow permissions -> Read and write permissions`.
 
-## AWS S3/CloudFront deployment (optional)
+### AWS S3/CloudFront deployment (optional)
 
 I don't think many will use this deployment option, so just a brief list:
 
@@ -46,6 +46,33 @@ I don't think many will use this deployment option, so just a brief list:
 
    - `S3_BUCKET`
    - `CF_DISTRIBUTION_ID`
+
+## Automations
+
+### Tests
+
+Runs on: pull request to `master` branch.
+Executes: pytest all files in `tests/`.
+
+### Rebuilding story.json
+
+Runs on: `story.ink` is pushed to `master` branch.
+Executes:
+
+- uses `inklecate` to compile the story.
+- pushes the compiled `web/story.js` back to the repo.
+
+### Uploading to AWS S3/CloudFront
+
+Runs on:
+
+- anything in `web/` is pushed to the `master` branch.
+- "Rebuilding story.json" workflow is completed.
+
+Executes:
+
+- uploads the contents of `web/` to the S3 bucket
+- invalidates the CloudFront distribution.
 
 ## Testing
 
