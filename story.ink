@@ -1,5 +1,6 @@
 # title: Operation Midnight Claw
 # author: Ivan Petrushev
+
 VAR time = 0
 VAR has_prototype = false
 VAR has_documents = false
