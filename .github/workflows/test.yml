@@ -23,6 +23,12 @@ jobs:
           key: inklecate-${{ hashFiles('inklecate_version.txt') }}
           restore-keys: |
             inklecate-
+      # Download the release if not found in cache
+      - name: Download inklecate
+        if: steps.inklecate-cache.outputs.cache-hit != 'true'
+        run: |
+          wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
+          echo "v1.2.0" > inklecate_version.txt
       - name: Unzip inklecate
         run: unzip -o inklecate_linux.zip
       - name: Install dependencies
