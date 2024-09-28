@@ -1,0 +1,28 @@
+name: Upload/deploy changes
+on:
+  push:
+    paths:
+      - 'web/**'
+    branches:
+      - master
+  workflow_run:
+    workflows: ["Rebuild story JSON"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: eu-central-1
+          S3_BUCKET: ${{ vars.S3_BUCKET }}
+          CF_DISTRIBUTION_ID: ${{ vars.CF_DISTRIBUTION_ID }}
+        run: |
+          aws s3 sync web/ s3://${S3_BUCKET}/fiction/demo/ --delete
+          aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths "/fiction/demo/*"

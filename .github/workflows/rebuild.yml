@@ -1,0 +1,53 @@
+name: Rebuild story JSON
+on:
+  push:
+    paths:
+      - story.ink
+    branches:
+      - master
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Cache the downloaded inklecate release based on its version
+      - name: Cache inklecate
+        id: inklecate-cache
+        uses: actions/cache@v3
+        with:
+          path: inklecate_linux.zip
+          key: inklecate-${{ hashFiles('inklecate_version.txt') }}
+          restore-keys: |
+            inklecate-
+      # Download the release if not found in cache
+      - name: Download inklecate
+        if: steps.inklecate-cache.outputs.cache-hit != 'true'
+        run: |
+          wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
+          echo "v1.2.0" > inklecate_version.txt
+      # Unzip the file for later use
+      - name: Unzip inklecate
+        run: unzip -o inklecate_linux.zip
+      # Compile the story into story.ink.json
+      - name: Compile story
+        run: ./inklecate story.ink
+      # Convert to story.js: wrap contents into var storyContent = 
+      - name: Convert to story.js
+        run: |
+          echo "var storyContent = " > web/story.js
+          cat story.ink.json >> web/story.js
+      # Commit the changes
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add web/story.js
+          git commit -m "Rebuild story JSON"
+      # Push the changes
+      - name: Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin HEAD:master
