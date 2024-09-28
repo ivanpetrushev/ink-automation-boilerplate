@@ -24,6 +24,13 @@ As a writer, I want to:
 7. PR automation will run tests.
 8. When PR is merged, automation will deploy the story to your chosen destination.
 
+## Rebuilding the story.json
+
+For the GitHub action to have access to commit back story.json changes, you need to give actions permissions:
+
+1. Go to `Settings -> Actions -> General`.
+2. Check `Workflow permissions -> Read and write permissions`.
+
 ## AWS S3/CloudFront deployment (optional)
 
 I don't think many will use this deployment option, so just a brief list:
