@@ -27,6 +27,7 @@ def test_time_advancement(p):
     p.sendline('1') # back to hub
     p.expect_exact('?>')
     p.sendline('time')
+    p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
     assert "1" in output
@@ -35,6 +36,7 @@ def test_time_advancement(p):
     p.sendline('1') # back to hub
     p.expect_exact('?>')
     p.sendline('time')
+    p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
     assert "2" in output
