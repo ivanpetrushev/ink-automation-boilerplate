@@ -41,9 +41,30 @@ def test_ending_2(p):
     p.expect_exact('?>')
     output = p.before
     print("Captured Output:", output)
-    assert "Mission: failure" in output 
-    assert "weaponized" in output
+    assert "Mission: fail" in output 
+    assert "weaponized" in output # test for words you deem unique to the tested event
+
+def test_ending_3(p):
+    """
+    Go through the whole path, check if the desired end is reached.
+    """
+    send_inputs(p, "1,1,3,1,3")
+    p.expect_exact('?>')
+    output = p.before
+    print("Captured Output:", output)
+    assert "Mission: fail" in output 
+    assert "not enough evidence" in output 
     
+def test_ending_4(p):
+    """
+    Go through the whole path, check if the desired end is reached.
+    """
+    send_inputs(p, "1,1,4")
+    p.expect_exact('?>')
+    output = p.before
+    print("Captured Output:", output)
+    assert "Mission: fail" in output 
+    assert "unfold worldwide" in output
 
 if __name__ == "__main__":
     pytest.main()
