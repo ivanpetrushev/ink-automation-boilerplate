@@ -1,0 +1,47 @@
+name: Run Reachability Analyzer
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_count:
+        description: Run count
+        required: true
+        default: 10
+        type: number
+
+jobs:
+  run-reachability-analyzer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      # Cache the downloaded inklecate release based on its version
+      - name: Cache inklecate
+        id: inklecate-cache
+        uses: actions/cache@v3
+        with:
+          path: inklecate_linux.zip
+          key: inklecate-v1.2.0
+          restore-keys: |
+            inklecate-v1.2.0
+      # Download the release if not found in cache
+      - name: Download inklecate
+        if: steps.inklecate-cache.outputs.cache-hit != 'true'
+        run: |
+          wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
+      # Unzip the file for later use
+      - name: Unzip inklecate
+        run: unzip -o inklecate_linux.zip -d inklecate/
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run reachability analyzer
+        run: python3 reachability_analyzer.py ${{ github.event.inputs.run_count }}
