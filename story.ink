@@ -12,7 +12,7 @@ VAR has_documents = false
 Subject: Agent Raven
 Preamble: Intel has confirmed that "Drone Dynamics" is currently processing an order to manufacture a new swarm of killer drones for a terrorist organisation. This mission is critical: we must obtain a drone prototype and uncover the identity of the client.
 
-Mission: Infiltrate the "Drone Dynamics" manufacturing facility. Your objectives are to steal a physical drone prototype and retrieve order and shipping documents. Our organization has successfully hacked the building's security systems, allowing for a brief window where alarms and cameras will be disabled.
+Mission: Infiltrate the "Drone Dynamics" manufacturing facility. Your objectives are to steal a physical drone prototype and retrieve order and shipping documents. Our organization has successfully hacked the building's security systems, allowing for a brief window where alarms and cameras will be disabled...
 
 Agent Raven has two options for entry:
 

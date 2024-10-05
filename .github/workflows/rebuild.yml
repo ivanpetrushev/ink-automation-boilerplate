@@ -28,7 +28,7 @@ jobs:
           wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
       # Unzip the file for later use
       - name: Unzip inklecate
-        run: unzip -o inklecate_linux.zip
+        run: unzip -o inklecate_linux.zip -d inklecate/
       # Compile the story into story.ink.json
       - name: Compile story
         run: ./inklecate story.ink
