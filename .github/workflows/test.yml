@@ -29,7 +29,7 @@ jobs:
         run: |
           wget https://github.com/inkle/ink/releases/download/v.1.2.0/inklecate_linux.zip
       - name: Unzip inklecate
-        run: unzip -o inklecate_linux.zip inklecate/
+        run: unzip -o inklecate_linux.zip -d inklecate/
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
