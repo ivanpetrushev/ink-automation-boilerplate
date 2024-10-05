@@ -12,6 +12,7 @@ As a writer, I want to:
 - have it automatically checked for logic errors
 - have it automatically exported to a web-based format
 - have it automatically deployed on my platform (my case is AWS S3/CloudFront, but this can be adapted)
+- have an option to easily check if any section is unreachable (broken diverts)
 
 ## Getting started
 
@@ -74,11 +75,27 @@ Executes:
 - uploads the contents of `web/` to the S3 bucket
 - invalidates the CloudFront distribution.
 
+### Running reachability analyzer
+
+Runs on:
+
+- manually triggered workflow
+
 ## Testing
 
 The workflow runs tests using `inklecate` in play mode. In this mode, the CLI tool will run the story and progress as the user types in choices.
 Since the goal is automated regression testing, the tests will emulate user input and will check the output against expected results.
 See more details and examples in `tests/`.
+
+## Reachability analyzer
+
+This is inspired from [Ink-Tester](https://github.com/wildwinter/Ink-Tester/). It is a simple script that will run the story multiple times, select random options and record which section are executed. At the end it will provide report of section execute count and will hint if certain section cannot be reached ("0 times executed").
+
+For best results, run this script a good amount of times (1000+). The script is not perfect and may not find all unreachable sections, but it is a good starting point.
+
+This can burn a lot GitHub actions minutes, so it is recommended to start first with a low amount of runs (10) and check the average run time. Then increase the runs to a desired amount.
+
+To run the Reachability Analyzer, go to `Actions` tab, select `Run reachability analyzer` and click `Run workflow`. You will be prompted to enter the number of runs.
 
 ## Questions and answers
 
