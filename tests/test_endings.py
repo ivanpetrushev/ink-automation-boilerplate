@@ -7,7 +7,7 @@ def p():
     Run inklecate and yield the pexpect spawn object.
     This gets executed before each test function and is passed as the `p` argument.
     """
-    child = pexpect.spawn('./inklecate -k -p story.ink', encoding='utf-8', timeout=5)
+    child = pexpect.spawn('./inklecate/inklecate -k -p story.ink', encoding='utf-8', timeout=5)
     # child.logfile_read = sys.stdout  # Redirect output to stdout for debugging
     yield child
     child.terminate(force=True)
